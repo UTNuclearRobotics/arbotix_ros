@@ -69,7 +69,7 @@ class JointStatePublisher:
         self.t_next = rospy.Time.now() + self.t_delta
 
         # subscriber
-        self.pub = rospy.Publisher('joint_states', JointState, queue_size=5)
+        self.pub = rospy.Publisher('arbotix_joint_states', JointState, queue_size=5)
 
     def update(self, joints, controllers):
         """ publish joint states. """

@@ -117,7 +117,7 @@ class controllerGUI(wx.Frame):
         sizer.Add(servoBox, (0,1), wx.GBSpan(1,1), wx.EXPAND|wx.TOP|wx.BOTTOM|wx.RIGHT,5)
         self.Bind(wx.EVT_CHECKBOX, self.enableSliders)
         # now we can subscribe
-        rospy.Subscriber('joint_states', JointState, self.stateCb)
+        rospy.Subscriber('arbotix_joint_states', JointState, self.stateCb)
 
         # timer for output
         self.timer = wx.Timer(self, self.TIMER_ID)

@@ -93,6 +93,7 @@ class DynamixelServo(Joint):
         if self.enabled and self.active and self.dirty:
             # compute command, limit velocity
             cmd = self.desired - self.last_cmd
+            tmp_cmd = cmd
             if cmd > self.max_speed/frame:
                 cmd = self.max_speed/frame
             elif cmd < -self.max_speed/frame:
@@ -233,6 +234,7 @@ class DynamixelServo(Joint):
     def commandCb(self, req):
         """ Float64 style command input. """
         if self.enabled:
+            self.max_speed = radians(rospy.get_param("/arbotix/joints/servo_tilt_joint/max_speed",684.0))
             if self.controller and self.controller.active():
                 # Under and action control, do not interfere
                 return
